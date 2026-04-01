@@ -67,6 +67,9 @@ class AgentEvalsStreamingProcessor:
     def on_start(self, span: ReadableSpan, parent_context=None) -> None:
         pass
 
+    def _on_ending(self, span: ReadableSpan) -> None:
+        pass
+
     def on_end(self, span: ReadableSpan) -> None:
         if not self._connected or not self.websocket or not self.loop:
             logger.debug(f"Skipping span {span.name}: not connected")
